@@ -38,16 +38,14 @@ export function MainContent({chat, setChat}){
             <div className="messages">
                 {currentMessages}
             </div>
-            <div className="send-wrap">
-                <div className="searchbar">
+                <div className="searchbar send-wrap">
                     <input type="text" 
                     placeholder="Scrivi un messaggio"
                     value={newmessage}
                     onChange={e => setNewmessage(e.target.value)}
                     />
+                    <button onClick={send}>invia</button>
                 </div>
-                <button onClick={send}>invia</button>
             </div>
-        </div>
     )
 }
