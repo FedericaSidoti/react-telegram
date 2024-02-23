@@ -1,7 +1,7 @@
-export function MainContent(){
+export function MainContent({chat}){
     return(
         <div className="main-content">
-            <p>chat</p>
+            <p>{chat}</p>
         </div>
     )
 }

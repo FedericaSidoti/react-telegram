@@ -2,9 +2,9 @@ import { useState } from "react";
 import { fakeData } from "../fakedata";
 
 
-function Contacts({message}){
-    const contacts = fakeData.map(contact=>
-        {   
+function Contacts({message, setChat}){
+    const contacts = fakeData.map((contact, i)=>
+        { 
             //logica per nascondere i non visibili
             let classlist = 'contact'
 
@@ -15,7 +15,7 @@ function Contacts({message}){
             }
             
             return(
-                <div className={classlist}>
+                <div className={classlist} onClick={()=>setChat(i)}>
                     <img src= {contact.avatar} />
                     <p>{contact.name}</p>
                 </div>
@@ -27,7 +27,7 @@ function Contacts({message}){
     return <div className="contacts">{contacts}</div>
 }
 
-export function Sidebar (){
+export function Sidebar ({setChat}){
 
     //logica di filtraggio
     const [message, setMessage] = useState('');
@@ -55,11 +55,11 @@ export function Sidebar (){
         <div className="searchbar">
             <i className="fa-solid fa-magnifying-glass"></i>
             <input type="text" 
-            placeholder='search'
+            placeholder='cerca'
             value={message}
             onChange={e => setMessage(e.target.value)}/>
         </div>
-        <Contacts message = {message}/>
+        <Contacts message = {message} setChat={setChat}/>
     </div>
     )
 }

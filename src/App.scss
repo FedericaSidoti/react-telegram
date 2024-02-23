@@ -18,13 +18,13 @@ body {
 
 //variabili
 $blue :  #0b64a8;
-$lightgray : #f5f6f8; 
+$lightgray : #212121; 
 
 //header
 
 .header{
   display: flex; 
-  padding: 20px; 
+  padding: 10px; 
   color: white; 
   background-color: $blue;
   align-items: center;
@@ -36,7 +36,7 @@ $lightgray : #f5f6f8;
     align-items: center;
 
     img {
-      width: 30px; 
+      width: 50px; 
     }
   }
 
@@ -54,7 +54,7 @@ $lightgray : #f5f6f8;
     align-items: center;
 
     img {
-      width: 30px; 
+      width: 50px; 
     }
   }
 }
@@ -68,6 +68,11 @@ main {
     width: 20%; 
     overflow: auto; 
     background-color: $lightgray;
+    display: flex; 
+    flex-direction: column;
+    gap: 20px; 
+    color: white; 
+    padding: 20px 5px; 
 
     .contacts{
       display: flex;
@@ -84,31 +89,41 @@ main {
         }
 
         img {
-          width: 40px; 
-          height: 40px;
+          width: 60px; 
+          height: 60px;
         }
+      }
+    }
+
+    .searchbar {
+      display: flex; 
+      justify-content: space-around;
+      align-items: center;
+    
+      input{
+        width: 80%; 
+        padding: 8px; 
+        border-radius: 10px; 
+        font-family: "Cinzel Decorative", serif;
+        background-color: #c5c4c4; 
+        font-weight: 900;
       }
     }
   }
 
 
   .main-content{
-    background-color: red;
+    background-image: url(../public/img/chat-bg.jpg);
+    background-size: cover;
     flex-grow: 1;
+    background-position: center;
+    color: white; 
+
+    
   }
 }
 
 .d-none{
   display: none; 
 }
-.searchbar {
-  display: flex; 
-  justify-content: space-around;
-  align-items: center;
 
-  input{
-    width: 90%; 
-    padding: 5px; 
-    border-radius: 10px; 
-  }
-}

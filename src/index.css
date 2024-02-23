@@ -1,6 +1,18 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-
+  font-family: "Cinzel Decorative", serif;
 }
 
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #596D86;
+  padding: 3px; 
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0B64A8;
+  width: 5px; 
+}
 
