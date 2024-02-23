@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { fakeData } from "../fakedata"; 
 
-export function MainContent({chat}){
+export function MainContent({chat, setChat}){
+    const num= chat;
 
     const [newmessage, setNewmessage] = useState('');
-    const [messages, setMessages] = useState(fakeData[chat].messages);
+    let messages = fakeData[chat].messages;
 
     const nextMessages = messages.slice();
 
@@ -19,13 +20,13 @@ export function MainContent({chat}){
     })
 
     function send(){
-        nextMessages.push({
+        fakeData[chat].messages.push({
             date: '20/03/2020 16:35:00',
             message: newmessage,
             status: 'sent'
         })
-        
-        setMessages(nextMessages)
+        setNewmessage('')
+        setChat(num)
     }
 
     return(

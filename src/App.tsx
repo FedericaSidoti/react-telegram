@@ -13,7 +13,7 @@ function App() {
       <Header />
       <main>
         <Sidebar setChat={setChat}/>
-        <MainContent chat = {chat}/>
+        <MainContent chat = {chat} setChat={setChat}/>
       </main>
     </>
   )
