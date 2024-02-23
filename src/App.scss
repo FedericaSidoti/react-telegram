@@ -60,6 +60,22 @@ $lightgray : #212121;
   }
 }
 
+.searchbar {
+  display: flex; 
+  justify-content: space-around;
+  align-items: center;
+
+  input{
+    width: 80%; 
+    padding: 8px; 
+    border-radius: 10px; 
+    font-family: "Cinzel Decorative", serif;
+    background-color: #c5c4c4; 
+    font-weight: 900;
+  }
+}
+
+
 main {
   flex-grow: 1;
   overflow: hidden;
@@ -100,21 +116,6 @@ main {
         background-color: $blue;
       }
     }
-
-    .searchbar {
-      display: flex; 
-      justify-content: space-around;
-      align-items: center;
-    
-      input{
-        width: 80%; 
-        padding: 8px; 
-        border-radius: 10px; 
-        font-family: "Cinzel Decorative", serif;
-        background-color: #c5c4c4; 
-        font-weight: 900;
-      }
-    }
   }
 
 
@@ -122,9 +123,43 @@ main {
     background-image: url(../public/img/chat-bg.jpg);
     background-size: cover;
     flex-grow: 1;
+    max-width: 70%;
     background-position: center;
     color: white; 
-    padding: 20px; 
+    overflow: hidden; 
+    position: relative;
+    height: 100%;
+    display: flex; 
+    flex-direction: column; 
+
+    .current-contact {
+      display: flex; 
+      gap: 20px; 
+      align-items: center;
+      background-color: $lightgray;
+      padding:13px; 
+      position: fixed;
+      width: 100%; 
+      img {
+        width: 50px;
+        border-radius: 50%;
+      }
+
+      p {
+        flex-grow: 1; 
+      }
+    }
+
+    .messages{
+      padding-top: 90px; 
+      flex-grow: 1; 
+      overflow: auto; 
+    }
+
+    .send-wrap {
+      background-color: $lightgray;
+      padding: 10px; 
+    }
 
     .message {
       display: flex; 
@@ -152,4 +187,5 @@ main {
 .d-none{
   display: none; 
 }
+
 

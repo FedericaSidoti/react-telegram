@@ -15,7 +15,19 @@ export function MainContent({chat}){
 
     return(
         <div className="main-content">
-            {currentMessages}
+            <div className="current-contact">
+                <img src={fakeData[chat].avatar} />
+                <p>{fakeData[chat].name}</p>
+            </div>
+            <div className="messages">
+                {currentMessages}
+            </div>
+            <div className="send-wrap">
+                <div className="searchbar">
+                    <input type="text" placeholder="Scrivi un messaggio"/>
+                </div>
+                
+            </div>
         </div>
     )
 }
