@@ -58,7 +58,6 @@ export function Sidebar (){
             placeholder='search'
             value={message}
             onChange={e => setMessage(e.target.value)}/>
-            <p>{message}</p>
         </div>
         <Contacts message = {message}/>
     </div>
