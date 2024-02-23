@@ -2,14 +2,18 @@ import { useState } from "react";
 import { fakeData } from "../fakedata";
 
 
-function Contacts(){
+function Contacts({message}){
     const contacts = fakeData.map(contact=>
         {   
             //logica per nascondere i non visibili
             let classlist = 'contact'
-            if(contact.visible === false){
-                classlist = ' d-none'
+
+            if(message !== ''){
+                if(contact.visible === false){
+                    classlist = ' d-none'
+                }
             }
+            
             return(
                 <div className={classlist}>
                     <img src= {contact.avatar} />
@@ -42,6 +46,8 @@ export function Sidebar (){
                 currentContact.visible = false
             }
         }
+    } else {
+
     }
 
     return(
@@ -54,7 +60,7 @@ export function Sidebar (){
             onChange={e => setMessage(e.target.value)}/>
             <p>{message}</p>
         </div>
-        <Contacts />
+        <Contacts message = {message}/>
     </div>
     )
 }
