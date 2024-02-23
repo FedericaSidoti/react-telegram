@@ -3,19 +3,27 @@ import { fakeData } from "../fakedata";
 
 
 function Contacts({message, setChat}){
+    const [active, setActive] = useState(0);
+
+    function onClickContact(i){
+            setChat(i);
+            setActive(i);
+    }
+
     const contacts = fakeData.map((contact, i)=>
         { 
             //logica per nascondere i non visibili
-            let classlist = 'contact'
+            let classlist = active===i? 'contact active' : 'contact'; 
 
             if(message !== ''){
                 if(contact.visible === false){
                     classlist = ' d-none'
                 }
             }
+
             
             return(
-                <div className={classlist} onClick={()=>setChat(i)}>
+                <div className={classlist} onClick={()=>onClickContact(i)}>
                     <img src= {contact.avatar} />
                     <p>{contact.name}</p>
                 </div>

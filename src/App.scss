@@ -93,6 +93,10 @@ main {
           height: 60px;
         }
       }
+
+      .active {
+        background-color: $blue;
+      }
     }
 
     .searchbar {
@@ -118,8 +122,28 @@ main {
     flex-grow: 1;
     background-position: center;
     color: white; 
+    padding: 20px; 
 
-    
+    .message {
+      display: flex; 
+      align-items: center; 
+      justify-content: flex-start;
+      padding: 10px; 
+
+      p {
+        padding: 5px 10px; 
+        border-radius: 20px; 
+        background-color: $lightgray;
+      }
+    }
+
+    .sent {
+      justify-content: flex-end;
+
+      p{
+        background-color: $blue;
+      }
+    }
   }
 }
 
