@@ -6,16 +6,6 @@ import { MainContent } from './components/MainContent';
 
 import './App.scss'
 
-
-function Searchbar (){
-  return(
-    <div className="searchbar">
-      <i className="fa-solid fa-magnifying-glass"></i>
-      <input type="text" placeholder='search'/>
-    </div>
-  )
-}
-
 function App() {
   return (
     <>

@@ -18,6 +18,7 @@ body {
 
 //variabili
 $blue :  #0b64a8;
+$lightgray : #f5f6f8; 
 
 //header
 
@@ -61,14 +62,35 @@ $blue :  #0b64a8;
 main {
   flex-grow: 1;
   overflow: hidden;
-  background-color: bisque;
   display: flex; 
 
   .sidebar{
-    background-color: aqua;
     width: 20%; 
     overflow: auto; 
+    background-color: $lightgray;
+
+    .contacts{
+      display: flex;
+      flex-direction: column;
+      gap: 5px; 
+      .contact{
+        display: flex; 
+        gap: 10px; 
+        align-items: center;
+        padding: 5px; 
+
+        &:hover {
+          background-color: $blue;
+        }
+
+        img {
+          width: 40px; 
+          height: 40px;
+        }
+      }
+    }
   }
+
 
   .main-content{
     background-color: red;
@@ -76,6 +98,9 @@ main {
   }
 }
 
+.d-none{
+  display: none; 
+}
 .searchbar {
   display: flex; 
   justify-content: space-around;
