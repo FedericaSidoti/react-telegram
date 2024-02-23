@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { fakeData } from "../fakedata";
 
+
 function Contacts(){
     const contacts = fakeData.map(contact=>
         {   
@@ -22,7 +23,7 @@ function Contacts(){
     return <div className="contacts">{contacts}</div>
 }
 
-function Searchbar (){
+export function Sidebar (){
 
     //logica di filtraggio
     const [message, setMessage] = useState('');
@@ -44,6 +45,7 @@ function Searchbar (){
     }
 
     return(
+    <div className="sidebar">
         <div className="searchbar">
             <i className="fa-solid fa-magnifying-glass"></i>
             <input type="text" 
@@ -52,16 +54,7 @@ function Searchbar (){
             onChange={e => setMessage(e.target.value)}/>
             <p>{message}</p>
         </div>
+        <Contacts />
+    </div>
     )
 }
-
-
-
-export function Sidebar(){
-        return(
-        <div className="sidebar">
-            <Searchbar />
-            <Contacts />
-        </div>
-        )
-    }
