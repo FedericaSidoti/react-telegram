@@ -9,16 +9,6 @@ export function MainContent({chat, setChat}){
 
     const nextMessages = messages.slice();
 
-
-    const currentMessages = nextMessages.map(message=>{
-        return(
-            <div className={message.status === 'sent'? 'message sent' : 'message'}>
-                <p>{message.message}</p>
-            </div>
-        )
-        
-    })
-
     function send(){
         fakeData[chat].messages.push({
             date: '20/03/2020 16:35:00',
@@ -27,7 +17,28 @@ export function MainContent({chat, setChat}){
         })
         setNewmessage('')
         setChat(num)
+        
+        setTimeout(() => {
+            fakeData[chat].messages.push({
+                date: '20/03/2020 16:36:00',
+                message: 'ciao',
+                status: 'received'
+            })
+            console.log('ciao')
+            setChat(num)
+        }, 1000);
     }
+
+    const currentMessages = nextMessages.map(message=>{
+        return(
+            <div key={message.message} className={message.status === 'sent'? 'message sent' : 'message'}>
+                <p>{message.message} </p>
+            </div>
+        )
+        
+    })
+
+    
 
     return(
         <div className="main-content">

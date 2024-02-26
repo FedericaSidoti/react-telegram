@@ -23,7 +23,7 @@ function Contacts({message, setChat}){
 
             
             return(
-                <div className={classlist} onClick={()=>onClickContact(i)}>
+                <div className={classlist} key={contact.name} onClick={()=>onClickContact(i)}>
                     <img src= {contact.avatar} />
                     <p>{contact.name}</p>
                 </div>
