@@ -1,35 +1,31 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { fakeData } from "../fakedata"; 
 
 export function MainContent({chat, setChat}){
-    const num= chat;
-
+    const [chatmsg, setChatmsg] = useState(fakeData[chat].messages)
     const [newmessage, setNewmessage] = useState('');
-    let messages = fakeData[chat].messages;
 
-    const nextMessages = messages.slice();
+    useEffect(() => {
+        // Aggiorna lo stato di chatmsg ogni volta che il valore di chat cambia
+        setChatmsg(fakeData[chat].messages);
+      }, [chat]);
+
 
     function send(){
-        fakeData[chat].messages.push({
+    
+        const sentMessage = {
             date: '20/03/2020 16:35:00',
             message: newmessage,
             status: 'sent'
-        })
-        setNewmessage('')
-        setChat(num)
+        }
         
-        setTimeout(() => {
-            fakeData[chat].messages.push({
-                date: '20/03/2020 16:36:00',
-                message: 'ciao',
-                status: 'received'
-            })
-            console.log('ciao')
-            setChat(num)
-        }, 1000);
+        setChatmsg([...chatmsg, sentMessage]);
+
+        setNewmessage('')
+        setChat(chat)
     }
 
-    const currentMessages = nextMessages.map(message=>{
+    const currentMessages = chatmsg.map(message=>{
         return(
             <div key={message.message} className={message.status === 'sent'? 'message sent' : 'message'}>
                 <p>{message.message} </p>
