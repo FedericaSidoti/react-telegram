@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { fakeData } from "../fakedata";
 
 
-function Contacts({message, setChat}){
+function Contacts({message, contacts, setChat}){
     const [active, setActive] = useState(0);
 
     function onClickContact(i){
@@ -10,7 +9,7 @@ function Contacts({message, setChat}){
             setActive(i);
     }
 
-    const contacts = fakeData.map((contact, i)=>
+    const mycontacts = contacts.map((contact, i)=>
         { 
             //logica per nascondere i non visibili
             let classlist = active===i? 'contact active' : 'contact'; 
@@ -32,10 +31,10 @@ function Contacts({message, setChat}){
         }
     )
 
-    return <div className="contacts">{contacts}</div>
+    return <div className="contacts">{mycontacts}</div>
 }
 
-export function Sidebar ({setChat}){
+export function Sidebar ({contacts, setChat}){
 
     //logica di filtraggio
     const [message, setMessage] = useState('');
@@ -45,8 +44,8 @@ export function Sidebar ({setChat}){
     const searchString = searchLast.toString()
 
     if(message !== ''){
-        for(let i = 0; i < fakeData.length; i++){
-            const currentContact = fakeData[i];
+        for(let i = 0; i < contacts.length; i++){
+            const currentContact = contacts[i];
             const currentName = currentContact.name.toLowerCase()
             if (currentName.includes(searchString)) {
                 currentContact.visible = true
@@ -67,7 +66,7 @@ export function Sidebar ({setChat}){
             value={message}
             onChange={e => setMessage(e.target.value)}/>
         </div>
-        <Contacts message = {message} setChat={setChat}/>
+        <Contacts message = {message} setChat={setChat} contacts = {contacts}/>
     </div>
     )
 }

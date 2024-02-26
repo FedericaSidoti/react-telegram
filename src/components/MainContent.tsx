@@ -1,15 +1,9 @@
-import { useEffect, useState } from "react";
-import { fakeData } from "../fakedata"; 
+import { useEffect, useState } from "react"; 
 
-export function MainContent({chat, setChat}){
-    const [chatmsg, setChatmsg] = useState(fakeData[chat].messages)
+export function MainContent({chat, contact}){
+    
     const [newmessage, setNewmessage] = useState('');
-
-    useEffect(() => {
-        // Aggiorna lo stato di chatmsg ogni volta che il valore di chat cambia
-        setChatmsg(fakeData[chat].messages);
-      }, [chat]);
-
+    let messages = contact.messages
 
     function send(){
     
@@ -19,13 +13,13 @@ export function MainContent({chat, setChat}){
             status: 'sent'
         }
         
-        setChatmsg([...chatmsg, sentMessage]);
+        messages=([...messages, sentMessage]);
 
         setNewmessage('')
-        setChat(chat)
+        // setChat(chat)
     }
 
-    const currentMessages = chatmsg.map(message=>{
+    const currentMessages = messages.map(message=>{
         return(
             <div key={message.message} className={message.status === 'sent'? 'message sent' : 'message'}>
                 <p>{message.message} </p>
@@ -39,8 +33,8 @@ export function MainContent({chat, setChat}){
     return(
         <div className="main-content">
             <div className="current-contact">
-                <img src={fakeData[chat].avatar} />
-                <p>{fakeData[chat].name}</p>
+                <img src={contact.avatar} />
+                <p>{contact.name}</p>
             </div>
             <div className="messages">
                 {currentMessages}
