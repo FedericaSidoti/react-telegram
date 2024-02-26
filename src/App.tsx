@@ -10,14 +10,35 @@ import { fakeData } from './fakedata';
 function App() {
   const [appdata, setAppdata] = useState(fakeData)
   const [chat, setChat] = useState(0); 
+
+  function handleSendMessage(message){
+
+    const newdate = new Date();
+    const hours = newdate.getHours()
+    const minutes = newdate.getMinutes()
+    const day = newdate.getDate()
+    const month = newdate.getMonth() +1
+
+    const formatDate = `${day}/${month}, ${hours}: ${minutes}`
+
+    const sentMessage = {
+      date: formatDate,
+      message: message,
+      status: 'sent'
+  }
+  const updatedData = [...appdata]
+  updatedData[chat].messages.push(sentMessage)
+  setAppdata(updatedData)
   
-  console.log(appdata)
+  }
+  
+
   return (
     <>
       <Header />
       <main>
         <Sidebar contacts = {appdata} setChat = {setChat} />
-        <MainContent chat = {chat} contact = {appdata[chat]} />
+        <MainContent contact = {appdata[chat]} onSendMessage = {handleSendMessage}/>
       </main>
     </>
   )

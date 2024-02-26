@@ -1,19 +1,13 @@
 import { useEffect, useState } from "react"; 
 
-export function MainContent({chat, contact}){
+export function MainContent({ contact, onSendMessage}){
     
     const [newmessage, setNewmessage] = useState('');
     let messages = contact.messages
 
-    function send(){
+    function handleClickSend(){
     
-        const sentMessage = {
-            date: '20/03/2020 16:35:00',
-            message: newmessage,
-            status: 'sent'
-        }
-        
-        messages=([...messages, sentMessage]);
+        onSendMessage(newmessage)
 
         setNewmessage('')
         // setChat(chat)
@@ -22,7 +16,9 @@ export function MainContent({chat, contact}){
     const currentMessages = messages.map(message=>{
         return(
             <div key={message.message} className={message.status === 'sent'? 'message sent' : 'message'}>
-                <p>{message.message} </p>
+                <p>{message.message} 
+                    <span>{message.date}</span>
+                </p>
             </div>
         )
         
@@ -45,7 +41,7 @@ export function MainContent({chat, contact}){
                     value={newmessage}
                     onChange={e => setNewmessage(e.target.value)}
                     />
-                    <button onClick={send}>invia</button>
+                    <button onClick={handleClickSend}>invia</button>
                 </div>
             </div>
     )
