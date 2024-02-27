@@ -5,14 +5,14 @@ export function MainContent({ contact, onSendMessage } : MainContentProps) {
     const [newmessage, setNewmessage] = useState("");
     let messages : Message[] = contact.messages;
 
-    function handleClickSend() {
+    function handleClickSend() : void {
         onSendMessage(newmessage);
 
         setNewmessage("");
         // setChat(chat)
     }
 
-    const currentMessages = messages.map((message, i) => {
+    const currentMessages = messages.map((message : Message, i : number) => {
         return (
             <div
                 key={i}
