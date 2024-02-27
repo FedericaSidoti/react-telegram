@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { MainContentProps, Message } from "../types";
 
-export function MainContent({ contact, onSendMessage }) {
+export function MainContent({ contact, onSendMessage } : MainContentProps) {
     const [newmessage, setNewmessage] = useState("");
-    let messages = contact.messages;
+    let messages : Message[] = contact.messages;
 
     function handleClickSend() {
         onSendMessage(newmessage);

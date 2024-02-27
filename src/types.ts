@@ -1,7 +1,9 @@
+
+type MessageStatus = "sent" | "received";
 export interface Message {
     date : string,
     message : string,
-    status : "sent" | "received"
+    status : MessageStatus;
 }
 
 export interface Contact{
@@ -20,4 +22,9 @@ export interface ContactsProps {
 export interface SidebarProps {
     contacts : Contact[];
     setChat : (index: number) => void; 
+}
+
+export interface MainContentProps {
+    contact : Contact;
+    onSendMessage : (message : string) => void
 }
