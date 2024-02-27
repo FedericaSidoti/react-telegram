@@ -201,6 +201,12 @@ main {
         padding: 5px 10px; 
         border-radius: 20px; 
         background-color: $lightgray;
+        display: flex;
+        flex-direction: column;
+      }
+
+      span {
+        font-size: 10px;
       }
     }
 

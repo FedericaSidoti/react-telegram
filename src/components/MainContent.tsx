@@ -1,62 +1,48 @@
-import { useState } from "react";
-import { fakeData } from "../fakedata"; 
+import { useEffect, useState } from "react";
 
-export function MainContent({chat, setChat}){
-    const num= chat;
+export function MainContent({ contact, onSendMessage }) {
+    const [newmessage, setNewmessage] = useState("");
+    let messages = contact.messages;
 
-    const [newmessage, setNewmessage] = useState('');
-    let messages = fakeData[chat].messages;
+    function handleClickSend() {
+        onSendMessage(newmessage);
 
-    const nextMessages = messages.slice();
-
-    function send(){
-        fakeData[chat].messages.push({
-            date: '20/03/2020 16:35:00',
-            message: newmessage,
-            status: 'sent'
-        })
-        setNewmessage('')
-        setChat(num)
-        
-        setTimeout(() => {
-            fakeData[chat].messages.push({
-                date: '20/03/2020 16:36:00',
-                message: 'ciao',
-                status: 'received'
-            })
-            console.log('ciao')
-            setChat(num)
-        }, 1000);
+        setNewmessage("");
+        // setChat(chat)
     }
 
-    const currentMessages = nextMessages.map(message=>{
-        return(
-            <div key={message.message} className={message.status === 'sent'? 'message sent' : 'message'}>
-                <p>{message.message} </p>
+    const currentMessages = messages.map((message) => {
+        return (
+            <div
+                key={message.message}
+                className={
+                    message.status === "sent" ? "message sent" : "message"
+                }
+            >
+                <p>
+                    {message.message}
+                    <span>{message.date}</span>
+                </p>
             </div>
-        )
-        
-    })
+        );
+    });
 
-    
-
-    return(
+    return (
         <div className="main-content">
             <div className="current-contact">
-                <img src={fakeData[chat].avatar} />
-                <p>{fakeData[chat].name}</p>
+                <img src={contact.avatar} />
+                <p>{contact.name}</p>
             </div>
-            <div className="messages">
-                {currentMessages}
-            </div>
-                <div className="searchbar send-wrap">
-                    <input type="text" 
+            <div className="messages">{currentMessages}</div>
+            <div className="searchbar send-wrap">
+                <input
+                    type="text"
                     placeholder="Scrivi un messaggio"
                     value={newmessage}
-                    onChange={e => setNewmessage(e.target.value)}
-                    />
-                    <button onClick={send}>invia</button>
-                </div>
+                    onChange={(e) => setNewmessage(e.target.value)}
+                />
+                <button onClick={handleClickSend}>invia</button>
             </div>
-    )
+        </div>
+    );
 }
