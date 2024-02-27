@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { MainContentProps, Message } from "../types";
+import { MessageBalloon } from "./MessageBalloon";
 
 export function MainContent({ contact, onSendMessage } : MainContentProps) {
     const [newmessage, setNewmessage] = useState("");
@@ -20,10 +21,7 @@ export function MainContent({ contact, onSendMessage } : MainContentProps) {
                     message.status === "sent" ? "message sent" : "message"
                 }
             >
-                <p>
-                    {message.message}
-                    <span>{message.date}</span>
-                </p>
+                <MessageBalloon message={message}/>
             </div>
         );
     });

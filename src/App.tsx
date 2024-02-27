@@ -12,7 +12,7 @@ function App() {
     const [appdata, setAppdata] = useState<Contact[]>(fakeData);
     const [chat, setChat] = useState(0);
 
-    function handleSendMessage(message : string) {
+    function handleSendMessage(message: string) {
         const newdate = new Date();
         const hours = newdate.getHours();
         const minutes = newdate.getMinutes();
@@ -21,7 +21,7 @@ function App() {
 
         const formatDate = `${day}/${month}, ${hours}: ${minutes}`;
 
-        const sentMessage : Message = {
+        const sentMessage: Message = {
             date: formatDate,
             message: message,
             status: "sent" as const,
