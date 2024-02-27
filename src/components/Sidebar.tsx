@@ -1,14 +1,15 @@
 import { useState } from "react";
+import { Contact , ContactsProps, SidebarProps } from "../types";
 
-function Contacts({ message, contacts, setChat }) {
+function Contacts({ message, contacts, setChat } : ContactsProps) {
     const [active, setActive] = useState(0);
 
-    function onClickContact(i) {
+    function onClickContact(i : number) : void {
         setChat(i);
         setActive(i);
     }
 
-    const mycontacts = contacts.map((contact, i) => {
+    const mycontacts = contacts.map((contact : Contact, i : number) => {
         //logica per nascondere i non visibili
         let classlist = active === i ? "contact active" : "contact";
 
@@ -33,7 +34,7 @@ function Contacts({ message, contacts, setChat }) {
     return <div className="contacts">{mycontacts}</div>;
 }
 
-export function Sidebar({ contacts, setChat }) {
+export function Sidebar({ contacts, setChat } : SidebarProps) {
     //logica di filtraggio
     const [message, setMessage] = useState("");
     const lettersArray = [];

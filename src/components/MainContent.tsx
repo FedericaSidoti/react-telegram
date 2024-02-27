@@ -11,10 +11,10 @@ export function MainContent({ contact, onSendMessage }) {
         // setChat(chat)
     }
 
-    const currentMessages = messages.map((message) => {
+    const currentMessages = messages.map((message, i) => {
         return (
             <div
-                key={message.message}
+                key={i}
                 className={
                     message.status === "sent" ? "message sent" : "message"
                 }
