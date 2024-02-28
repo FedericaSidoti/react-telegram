@@ -35,3 +35,7 @@ export interface MainContentProps {
 export interface MessageProps {
     message : Message
 }
+
+export interface InputMessageProps {
+    handleMessage : (newmessage : string) => void
+}

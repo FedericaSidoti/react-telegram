@@ -1,19 +1,12 @@
 import { useState } from "react";
 import { MainContentProps, Message } from "../types";
 import { MessageBalloon } from "./MessageBalloon";
+import { InputMessage } from "./InputMessage";
 
-export function MainContent({ contact, onSendMessage } : MainContentProps) {
-    const [newmessage, setNewmessage] = useState("");
-    let messages : Message[] = contact.messages;
+export function MainContent({ contact, onSendMessage }: MainContentProps) {
+    let messages: Message[] = contact.messages;
 
-    function handleClickSend() : void {
-        onSendMessage(newmessage);
-
-        setNewmessage("");
-        // setChat(chat)
-    }
-
-    const currentMessages = messages.map((message : Message, i : number) => {
+    const currentMessages = messages.map((message: Message, i: number) => {
         return (
             <div
                 key={i}
@@ -21,7 +14,7 @@ export function MainContent({ contact, onSendMessage } : MainContentProps) {
                     message.status === "sent" ? "message sent" : "message"
                 }
             >
-                <MessageBalloon message={message}/>
+                <MessageBalloon message={message} />
             </div>
         );
     });
@@ -33,15 +26,7 @@ export function MainContent({ contact, onSendMessage } : MainContentProps) {
                 <p>{contact.name}</p>
             </div>
             <div className="messages">{currentMessages}</div>
-            <div className="searchbar send-wrap">
-                <input
-                    type="text"
-                    placeholder="Scrivi un messaggio"
-                    value={newmessage}
-                    onChange={(e) => setNewmessage(e.target.value)}
-                />
-                <button onClick={handleClickSend}>invia</button>
-            </div>
+            <InputMessage handleMessage={onSendMessage} />
         </div>
     );
 }
