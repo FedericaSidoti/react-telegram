@@ -1,0 +1,53 @@
+//sidebar
+
+.searchbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    input {
+        width: 80%;
+        padding: 8px;
+        border-radius: 10px;
+        font-family: "Cinzel Decorative", serif;
+        background-color: $lightgray;
+        font-weight: 900;
+    }
+}
+
+.sidebar {
+    width: 30%;
+    overflow: auto;
+    background-color: $gray;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    color: white;
+    padding: 20px 5px;
+
+    .contacts {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        .contact {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            padding: 5px;
+
+            &:hover {
+                background-color: $blue;
+            }
+
+            img {
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+            }
+        }
+
+        .active {
+            background-color: $blue;
+        }
+    }
+}
