@@ -7,6 +7,7 @@ export interface Message {
 
 export interface Contact {
     name: string;
+    id : number;
     avatar: string;
     visible: boolean;
     messages: Message[];

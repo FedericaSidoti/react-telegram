@@ -1,6 +1,7 @@
 export const fakeData = [
     {
         name: "Tyrion",
+        id : 0,
         avatar: "./img/avatar_1.png",
         visible: true,
         messages: [
@@ -23,6 +24,7 @@ export const fakeData = [
     },
     {
         name: "Sansa",
+        id : 1,
         avatar: "./img/avatar_2.jpg",
         visible: true,
         messages: [
@@ -45,6 +47,7 @@ export const fakeData = [
     },
     {
         name: "Cersei",
+        id : 2,
         avatar: "./img/avatar_3.png",
         visible: true,
         messages: [
@@ -67,6 +70,7 @@ export const fakeData = [
     },
     {
         name: "Bran",
+        id : 3,
         avatar: "./img/avatar_4.png",
         visible: true,
         messages: [
@@ -84,6 +88,7 @@ export const fakeData = [
     },
     {
         name: "Ned",
+        id : 4,
         avatar: "./img/avatar_5.jfif",
         visible: true,
         messages: [
@@ -101,6 +106,7 @@ export const fakeData = [
     },
     {
         name: "Samwell",
+        id : 5,
         avatar: "./img/avatar_6.png",
         visible: true,
         messages: [
@@ -123,6 +129,7 @@ export const fakeData = [
     },
     {
         name: "Thormund",
+        id : 6,
         avatar: "./img/avatar_7.png",
         visible: true,
         messages: [
@@ -140,6 +147,7 @@ export const fakeData = [
     },
     {
         name: "Daenerys",
+        id : 7,
         avatar: "./img/avatar_8.png",
         visible: true,
         messages: [

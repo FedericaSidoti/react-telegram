@@ -6,9 +6,9 @@ import { ContactBox } from "./ContactBox";
 export function Contacts({ message, contacts, setChat } : ContactsProps) {
     const [active, setActive] = useState(0);
 
-    function onClickContact(i : number) : void {
-        setChat(i);
-        setActive(i);
+    function onClickContact(id : number) : void {
+        setChat(id);
+        setActive(id);
     }
 
     const mycontacts = contacts.map((contact : Contact, i : number) => {
@@ -25,7 +25,7 @@ export function Contacts({ message, contacts, setChat } : ContactsProps) {
             <div
                 className={classlist}
                 key={contact.name}
-                onClick={() => onClickContact(i)}
+                onClick={() => onClickContact(contact.id)}
             >
                 <ContactBox contact = {contact} />
             </div>
