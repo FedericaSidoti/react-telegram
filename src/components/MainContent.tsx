@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { MainContentProps, Message } from "../types";
 import { MessageBalloon } from "./MessageBalloon";
 import { InputMessage } from "./InputMessage";

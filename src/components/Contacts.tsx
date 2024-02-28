@@ -27,8 +27,6 @@ export function Contacts({ message, contacts, setChat } : ContactsProps) {
                 key={contact.name}
                 onClick={() => onClickContact(i)}
             >
-                {/* <img src={contact.avatar} />
-                <p>{contact.name}</p> */}
                 <ContactBox contact = {contact} />
             </div>
         );
