@@ -1,23 +1,23 @@
-import { useState } from "react";
-import { SidebarProps } from "../types";
-import { Contacts } from "./Contacts";
+import {useState} from 'react'
+import {SidebarProps} from '../types'
+import {Contacts} from './Contacts'
 
-export function Sidebar({ contacts, setChat } : SidebarProps) {
+export function Sidebar({contacts, setChat}: SidebarProps) {
     //logica di filtraggio
-    const [message, setMessage] = useState("");
-    const lettersArray = [];
-    lettersArray.push(message);
-    const searchLast = lettersArray.slice(-1);
-    const searchString = searchLast.toString();
+    const [message, setMessage] = useState('')
+    const lettersArray = []
+    lettersArray.push(message)
+    const searchLast = lettersArray.slice(-1)
+    const searchString = searchLast.toString()
 
-    if (message !== "") {
+    if (message !== '') {
         for (let i = 0; i < contacts.length; i++) {
-            const currentContact = contacts[i];
-            const currentName = currentContact.name.toLowerCase();
+            const currentContact = contacts[i]
+            const currentName = currentContact.name.toLowerCase()
             if (currentName.includes(searchString)) {
-                currentContact.visible = true;
+                currentContact.visible = true
             } else {
-                currentContact.visible = false;
+                currentContact.visible = false
             }
         }
     } else {
@@ -31,10 +31,10 @@ export function Sidebar({ contacts, setChat } : SidebarProps) {
                     type="text"
                     placeholder="cerca"
                     value={message}
-                    onChange={(e) => setMessage(e.target.value)}
+                    onChange={e => setMessage(e.target.value)}
                 />
             </div>
             <Contacts message={message} setChat={setChat} contacts={contacts} />
         </div>
-    );
+    )
 }

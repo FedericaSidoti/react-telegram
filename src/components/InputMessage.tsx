@@ -1,13 +1,13 @@
-import { useState } from "react";
-import { InputMessageProps } from "../types";
+import {useState} from 'react'
+import {InputMessageProps} from '../types'
 
-export function InputMessage({ handleMessage } : InputMessageProps) {
-    const [newmessage, setNewmessage] = useState("");
+export function InputMessage({handleMessage}: InputMessageProps) {
+    const [newmessage, setNewmessage] = useState('')
 
     function handleClickSend(): void {
-        handleMessage(newmessage);
+        handleMessage(newmessage)
 
-        setNewmessage("");
+        setNewmessage('')
         // setChat(chat)
     }
 
@@ -17,9 +17,9 @@ export function InputMessage({ handleMessage } : InputMessageProps) {
                 type="text"
                 placeholder="Scrivi un messaggio"
                 value={newmessage}
-                onChange={(e) => setNewmessage(e.target.value)}
+                onChange={e => setNewmessage(e.target.value)}
             />
             <button onClick={handleClickSend}>invia</button>
         </div>
-    );
+    )
 }

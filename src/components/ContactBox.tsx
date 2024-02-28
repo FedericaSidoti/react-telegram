@@ -1,6 +1,6 @@
-import { ContactBoxProps } from "../types";
+import { Contact, ContactBoxProps } from "../types";
 
-export function ContactBox({ contact }: ContactBoxProps) {
+export function ContactBox({ contact }: { contact: Contact }) {
     return (
         <>
             <img src={contact.avatar} />
