@@ -1,31 +1,21 @@
-import { useEffect, useState } from "react";
+import {MainContentProps, Message} from '../types'
+import {MessageBalloon} from './MessageBalloon'
+import {InputMessage} from './InputMessage'
 
-export function MainContent({ contact, onSendMessage }) {
-    const [newmessage, setNewmessage] = useState("");
-    let messages = contact.messages;
+export function MainContent({contact, onSendMessage}: MainContentProps) {
+    let messages: Message[] = contact.messages
 
-    function handleClickSend() {
-        onSendMessage(newmessage);
-
-        setNewmessage("");
-        // setChat(chat)
-    }
-
-    const currentMessages = messages.map((message) => {
+    const currentMessages = messages.map((message: Message, i: number) => {
         return (
             <div
-                key={message.message}
+                key={i}
                 className={
-                    message.status === "sent" ? "message sent" : "message"
-                }
-            >
-                <p>
-                    {message.message}
-                    <span>{message.date}</span>
-                </p>
+                    message.status === 'sent' ? 'message sent' : 'message'
+                }>
+                <MessageBalloon message={message} />
             </div>
-        );
-    });
+        )
+    })
 
     return (
         <div className="main-content">
@@ -34,15 +24,7 @@ export function MainContent({ contact, onSendMessage }) {
                 <p>{contact.name}</p>
             </div>
             <div className="messages">{currentMessages}</div>
-            <div className="searchbar send-wrap">
-                <input
-                    type="text"
-                    placeholder="Scrivi un messaggio"
-                    value={newmessage}
-                    onChange={(e) => setNewmessage(e.target.value)}
-                />
-                <button onClick={handleClickSend}>invia</button>
-            </div>
+            <InputMessage handleMessage={onSendMessage} />
         </div>
-    );
+    )
 }

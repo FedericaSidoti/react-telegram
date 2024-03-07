@@ -1,0 +1,39 @@
+//header
+
+.header {
+    display: flex;
+    padding: 10px 20px;
+    color: white;
+    background-color: $blue;
+    align-items: center;
+
+    .logo {
+        width: 30%;
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        padding: 0 10px;
+
+        img {
+            width: 50px;
+        }
+    }
+
+    .disclaimer {
+        flex-grow: 1;
+        color: $lightgray ;
+        text-align: center;
+    }
+
+    .user {
+        width: 20%;
+        display: flex;
+        gap: 10px;
+        justify-content: flex-end;
+        align-items: center;
+
+        img {
+            width: 50px;
+        }
+    }
+}

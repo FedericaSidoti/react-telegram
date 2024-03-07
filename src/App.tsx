@@ -1,17 +1,18 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { Header } from "./components/Header";
 import { Sidebar } from "./components/Sidebar";
 import { MainContent } from "./components/MainContent";
+import { Contact, Message } from "./types";
 
 import "./App.scss";
 import { fakeData } from "./fakedata";
 
 function App() {
-    const [appdata, setAppdata] = useState(fakeData);
+    const [appdata, setAppdata] = useState<Contact[]>(fakeData);
     const [chat, setChat] = useState(0);
 
-    function handleSendMessage(message) {
+    function handleSendMessage(message: string) {
         const newdate = new Date();
         const hours = newdate.getHours();
         const minutes = newdate.getMinutes();
@@ -20,10 +21,10 @@ function App() {
 
         const formatDate = `${day}/${month}, ${hours}: ${minutes}`;
 
-        const sentMessage = {
+        const sentMessage: Message = {
             date: formatDate,
             message: message,
-            status: "sent",
+            status: "sent" as const,
         };
         const updatedData = [...appdata];
         updatedData[chat].messages.push(sentMessage);
